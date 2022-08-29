@@ -23,19 +23,31 @@ public class StepsTest {
         step("Открываем главную страницу", () -> {
             open("https://github.com/");
         });
-        step("Ищем репозиторий " + REPOSITORY, () -> {
+        step("Ищем репозиторий : " + REPOSITORY, () -> {
             $(".header-search-input").click();
             $(".header-search-input").sendKeys(REPOSITORY);
             $(".header-search-input").submit();
         });
-        step("Кликаем по ссылке " + REPOSITORY, () -> {
+        step("Кликаем по ссылке : " + REPOSITORY, () -> {
             $(linkText(REPOSITORY)).click();
         });
         step("Открываем Tab-issues", () -> {
             $("#issues-tab").click();
         });
-        step("Приверяем наличие Issue с номером " + ISSUE, () -> {
+        step("Приверяем наличие Issue с номером : " + ISSUE, () -> {
             $(withText("#" + ISSUE)).should(Condition.exist);
         });
+    }
+
+    @Test
+    public void testAnnotatedStep() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        WebSteps steps = new WebSteps();
+
+        steps.openMainPage();
+        steps.searchForRepository(REPOSITORY);
+        steps.clickOnRepositoryLink(REPOSITORY);
+        steps.openIssueTab();
+        steps.shouldSeeIssueWithNumber(ISSUE);
     }
 }
