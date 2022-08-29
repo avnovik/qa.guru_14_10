@@ -9,4 +9,4 @@
 3. Шаги с аннотацией @Step
 
 
-* настроить CI GitHub Action
+4* настроить CI GitHub Action
