@@ -13,8 +13,8 @@ import static org.openqa.selenium.By.linkText;
 
 public class StepsTest {
 
-    private static final String REPOSITORY = "eroshenkoam/allure-example";
-    private static final int ISSUE = 80;
+    private static final String REPOSITORY = "avnovik/qa.guru_14_10";
+    private static final int ISSUE = 1;
 
     @Test
     public void testLambdaStep() {
